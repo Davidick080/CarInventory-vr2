@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-
+using System.Xml;
 namespace CarInventory
 {
     public partial class Form1 : Form
@@ -123,6 +123,16 @@ namespace CarInventory
             //inventory = inventory.OrderBy(a => a.make).ThenByDescending(a => a.year).ToList();
 
             displayItems();
+        }
+        public void saveDB()
+        {
+            XmlWriter writter= XmlWriter.Create("Resources/XML1.xml", null);
+            writter.WriteStartElement("Car");
+            foreach ( Car emp in inventory)
+            {
+                writter.WriteStartElement("Car");
+
+            }
         }
     }
 }
